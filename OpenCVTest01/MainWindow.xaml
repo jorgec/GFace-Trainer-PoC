@@ -1,0 +1,67 @@
+﻿<Window x:Class="OpenCVTest01.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OpenCVTest01"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="793" Width="1250">
+    <Grid>
+        <Grid HorizontalAlignment="Left" Height="742" Margin="10,10,0,0" VerticalAlignment="Top" Width="1222">
+            <GroupBox Header="Log" HorizontalAlignment="Left" Height="381" Margin="875,0,0,0" VerticalAlignment="Top" Width="347">
+                <ScrollViewer HorizontalAlignment="Left" Height="337" Margin="0,10,-2,0" VerticalAlignment="Top" Width="337">
+                    <TextBlock x:Name="Log" TextWrapping="Wrap" Text="Waiting..." Width="310" Height="322"/>
+                </ScrollViewer>
+            </GroupBox>
+            <GroupBox Header="Previews" HorizontalAlignment="Left" Height="318" Margin="424,386,0,0" VerticalAlignment="Top" Width="446">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Height="Auto"  Margin="0,12,0,4" MinHeight="200">
+                    <WrapPanel x:Name="panelPreviews" HorizontalAlignment="Left" Margin="4,7,0,0" VerticalAlignment="Top" Width="426" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" MinHeight="500"/>
+                </ScrollViewer>
+            </GroupBox>
+            <GroupBox Header="Training" HorizontalAlignment="Left" Height="221" Margin="0,483,0,0" VerticalAlignment="Top" Width="419">
+                <Grid HorizontalAlignment="Left" Height="190" Margin="5,4,0,0" VerticalAlignment="Top" Width="398">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="106*"/>
+                        <ColumnDefinition Width="93*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="BtnGrabFaces" Content="Grab Faces" HorizontalAlignment="Left" Margin="0,77,0,0" VerticalAlignment="Top" Width="87" Height="28" Click="BtnGrabFaces_Click" TabIndex="4"/>
+                    <TextBox x:Name="TxtPersonName" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="92,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" TabIndex="1"/>
+                    <TextBox x:Name="TxtGroupName" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="92,43,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" TabIndex="2" Text="sv"/>
+                    <Button x:Name="BtnSetName" Content="Set Names" Grid.Column="1" HorizontalAlignment="Left" Height="51" Margin="110,15,0,0" VerticalAlignment="Top" Width="66" Click="BtnSetName_Click" TabIndex="3"/>
+                    <Button x:Name="BtnTrain" Content="Train" HorizontalAlignment="Left" Height="28" Margin="92,112,0,0" VerticalAlignment="Top" Width="86" TabIndex="6" Click="BtnTrain_Click"/>
+                    <TextBox x:Name="TxtPersonId" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="60,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="45"/>
+                    <Button x:Name="BtnIdentify" Grid.ColumnSpan="2" Content="Identify" HorizontalAlignment="Left" Height="63" Margin="188,77,0,0" VerticalAlignment="Top" Width="200" Click="BtnIdentify_Click"/>
+                    <Button x:Name="BtnDeleteGroup" Content="Delete Group" HorizontalAlignment="Left" Height="28" Margin="93,148,0,0" VerticalAlignment="Top" Width="85" Click="BtnDeleteGroup_Click"/>
+                </Grid>
+            </GroupBox>
+            <Label Content="Person Name" HorizontalAlignment="Left" Margin="11,517,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.263,-0.038" Width="81"/>
+            <Label Content="Group Name" HorizontalAlignment="Left" Margin="11,548,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.263,-0.038" Width="81"/>
+            <Button x:Name="BtnClearFaces" Content="Clear Faces" HorizontalAlignment="Left" Margin="103,579,0,0" VerticalAlignment="Top" Width="86" Height="28" TabIndex="4" Click="BtnClearFaces_Click"/>
+            <Button x:Name="BtnLoadToTrainer" Content="Load to trainer" HorizontalAlignment="Left" Height="28" Margin="11,616,0,0" VerticalAlignment="Top" Width="87" TabIndex="5" Click="BtnLoadToTrainer_Click"/>
+            <GroupBox Header="Capture" HorizontalAlignment="Left" Height="381" Margin="425,0,0,0" VerticalAlignment="Top" Width="445">
+                <Grid HorizontalAlignment="Left" Height="345" Margin="4,10,0,0" VerticalAlignment="Top" Width="425">
+                    <Button x:Name="BtnCapture" Content="Capture" HorizontalAlignment="Left" Margin="0,315,0,0" VerticalAlignment="Top" Width="85" Click="BtnCapture_Click" Height="30"/>
+                    <Image x:Name="ImgCapture" HorizontalAlignment="Left" Height="300" Margin="0,10,0,0" VerticalAlignment="Top" Width="405"/>
+                    <CheckBox x:Name="CheckBoxLiveFaces" Content="Live Faces" HorizontalAlignment="Left" Height="17" Margin="90,323,0,0" VerticalAlignment="Top" Width="112"/>
+                </Grid>
+            </GroupBox>
+            <Image x:Name="ImgPreviewBox" HorizontalAlignment="Left" Height="309" Margin="881,395,0,0" VerticalAlignment="Top" Width="331"/>
+        </Grid>
+        <GroupBox Header="Camera" HorizontalAlignment="Left" Height="481" Margin="10,10,0,0" VerticalAlignment="Top" Width="420">
+            <Grid HorizontalAlignment="Left" Height="446" Margin="0,10,-2,0" VerticalAlignment="Top" Width="410">
+                <Image x:Name="imgLiveCam" HorizontalAlignment="Left" Height="300" Margin="4,0,0,0" VerticalAlignment="Top" Width="400"/>
+                <Button x:Name="BtnCamera" Content="Camera" HorizontalAlignment="Left" Margin="4,408,0,0" VerticalAlignment="Top" Width="89" Click="BtnCamera_Click" Height="28"/>
+                <Button x:Name="BtnSingle" Content="Single" HorizontalAlignment="Left" Height="28" Margin="98,408,0,0" VerticalAlignment="Top" Width="89" Click="BtnSingle_Click"/>
+                <CheckBox x:Name="CheckBoxRecord" Content="Record as Stream" HorizontalAlignment="Left" Margin="288,415,0,0" VerticalAlignment="Top"/>
+                <Label Content="Exposure" HorizontalAlignment="Left" Margin="10,305,0,0" VerticalAlignment="Top"/>
+                <Label Content="FPS" HorizontalAlignment="Left" Margin="10,336,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="TxtExposure" HorizontalAlignment="Left" Height="23" Margin="98,308,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="302" Text="0"/>
+                <TextBox x:Name="TxtFPS" HorizontalAlignment="Left" Height="23" Margin="98,336,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="302" Text="10"/>
+                <Button x:Name="BtnSetCamera" Content="Set Camera" HorizontalAlignment="Left" Margin="4,375,0,0" VerticalAlignment="Top" Width="89" Height="28" Click="BtnSetCamera_Click"/>
+                <Button x:Name="BtnLiveFace" Content="Live Faces" HorizontalAlignment="Left" Height="28" Margin="192,408,0,0" VerticalAlignment="Top" Width="89" Click="BtnLiveFace_Click"/>
+            </Grid>
+        </GroupBox>
+        <Label x:Name="Status" Content="Waiting..." HorizontalAlignment="Left" Height="28" Margin="10,724,0,0" VerticalAlignment="Top" Width="867"/>
+
+    </Grid>
+</Window>
