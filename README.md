@@ -1,4 +1,4 @@
-# GFace Trainer Module
+# GFace Trainer Module - DEPRECATED
 ## GFace Proof of Capability
 
 Identity training PoC for GFace. Capture faces, assign a name and group, and upload to API.
